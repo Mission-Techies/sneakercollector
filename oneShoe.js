@@ -13,12 +13,13 @@ $.urlParam = function(name){
 
 /*global api_key*/
 var url_one_shoe = function() {
-  var url_id = $.urlParam('shoesID');
+  var url_id = $.urlParam('shoeID');
   return 'https://api.airtable.com/v0/appSGsFkaru4JJ41z/Shoes/' + url_id +'?api_key=' + api_key;
 }
 
 
 function renderOneShoe(shoes) {
+  console.log(shoes)
             var shoe_name = shoes.fields['Name'];
             var shoe_pics = shoes.fields['Pictures'];
             var shoe_foams = shoes.fields['foamposites'];
@@ -43,6 +44,5 @@ function renderOneShoe(shoes) {
       $('.one_shoes_foams').append(shoe_info);
 }
 
-if ($.urlParam('shoesID')) {
-  $.get(url_one_shoe(), renderOneShoe);   
-}
+$.get(url_one_shoe(), renderOneShoe);   
+
